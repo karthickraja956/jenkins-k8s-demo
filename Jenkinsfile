@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/example/my-node-app.git'
+                git 'https://github.com/karthickraja956/jenkins-k8s-demo.git'
             }
         }
 
