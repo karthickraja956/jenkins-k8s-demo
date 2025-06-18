@@ -34,13 +34,15 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    sh "kubectl set image deployment/${DEPLOYMENT_NAME} ${DEPLOYMENT_NAME}=${REGISTRY}/${IMAGE_NAME}:latest --namespace=${NAMESPACE}"
-                }
-            }
+stage('Deploy to Kubernetes') {
+    steps {
+        script {
+            def DEPLOYMENT_NAME = 'my-node-app-deployment'
+            sh "kubectl apply -f ${DEPLOYMENT_NAME}.yaml"
         }
+    }
+}
+
+       
     }
 }
