@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "my-node-app"
-        REGISTRY = "docker.io/karthick820"
-        DEPLOYMENT_NAME = "node-app"
-        NAMESPACE = "default"
-    }
+    IMAGE_NAME = "my-node-app"
+    REGISTRY = "karthick820"
+    FULL_IMAGE = "docker.io/${REGISTRY}/${IMAGE_NAME}"
+}
+
 
     stages {
         stage('Checkout') {
@@ -15,13 +15,13 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${IMAGE_NAME}", "app")
-                }
-            }
+       stage('Build Docker Image') {
+    steps {
+        script {
+            docker.build("${FULL_IMAGE}", "app")
         }
+    }
+}
 
         stage('Push to Docker Hub') {
             steps {
