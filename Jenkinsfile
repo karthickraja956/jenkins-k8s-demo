@@ -27,7 +27,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'd3c4d27c-c4b3-4309-b5d2-47648db85e79', usernameVariable: 'karthick820', passwordVariable: 'Karthick10')]) {
                     script {
-                        docker.withRegistry("https://${REGISTRY}", 'd3c4d27c-c4b3-4309-b5d2-47648db85e79') {
+                        docker.withRegistry('https://index.docker.io/v1/', 'd3c4d27c-c4b3-4309-b5d2-47648db85e79'){
                             docker.image("${REGISTRY}/${IMAGE_NAME}").push("latest")
                         }
                     }
