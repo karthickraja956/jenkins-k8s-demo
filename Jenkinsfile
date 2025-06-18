@@ -37,7 +37,7 @@ pipeline {
 stage('Deploy to Kubernetes') {
     steps {
         script {
-            def DEPLOYMENT_NAME = 'my-node-app-deployment'
+            def DEPLOYMENT_NAME = 'k8s/node-app-deployment'
             sh "kubectl apply -f ${DEPLOYMENT_NAME}.yaml"
         }
     }
