@@ -36,21 +36,21 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    try {
-                        sh 'kubectl apply --validate=false -f k8s/node-app-deployment.yaml'
-                        sh 'get pods'
-                        echo "Kubernetes deployment successful."
-                    } catch (Exception e) {
-                        echo "Kubernetes deployment failed: ${e}"
-                        currentBuild.result = 'UNSTABLE'  // mark build unstable instead of failed
-                        // Optional: add notifications or other recovery steps here
-                    }
-                }
-            }
-        }
+        // stage('Deploy to Kubernetes') {
+        //     steps {
+        //         script {
+                    
+        //                 sh 'kubectl apply --validate=false -f k8s/node-app-deployment.yaml'
+        //                 //sh 'get pods'
+        //                 echo "Kubernetes deployment successful."
+        //             } catch (Exception e) {
+        //                 echo "Kubernetes deployment failed: ${e}"
+        //                 currentBuild.result = 'UNSTABLE'  // mark build unstable instead of failed
+        //                 // Optional: add notifications or other recovery steps here
+        //             }
+        //         }
+        //     }
+        // }
 
        
     }
