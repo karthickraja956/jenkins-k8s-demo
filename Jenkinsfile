@@ -4,6 +4,7 @@ pipeline {
     environment {
     IMAGE_NAME = "my-node-app"
     REGISTRY = "karthick820"
+    Docker_ID=env.Docker_PAT"
     FULL_IMAGE = "docker.io/${REGISTRY}/${IMAGE_NAME}"
 }
 
@@ -27,7 +28,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'd3c4d27c-c4b3-4309-b5d2-47648db85e79', usernameVariable: 'karthick820', passwordVariable: 'Karthick10')]) {
                     script {
-                        docker.withRegistry('https://index.docker.io/v1/', 'd3c4d27c-c4b3-4309-b5d2-47648db85e79'){
+                        docker.withRegistry('https://index.docker.io/v1/', "{Docker_ID}"){
                             docker.image("${REGISTRY}/${IMAGE_NAME}").push("latest")
                         }
                     }
