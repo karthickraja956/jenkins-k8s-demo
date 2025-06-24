@@ -29,7 +29,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId:Docker_ID, usernameVariable: 'karthick820', passwordVariable: 'Karthick10')]) {
                     script {
-                        docker.withRegistry('https://index.docker.io/v1/', "{Docker_ID}"){
+                        docker.withRegistry('https://index.docker.io/v1/', Docker_ID){
                             docker.image("${REGISTRY}/${IMAGE_NAME}").push("latest")
                         }
                     }
