@@ -4,7 +4,7 @@ pipeline {
     environment {
     IMAGE_NAME = "my-node-app"
     REGISTRY = "karthick820"
-    Docker_ID=env.Docker_PAT"
+    Docker_ID=env.Docker_PAT
     FULL_IMAGE = "docker.io/${REGISTRY}/${IMAGE_NAME}"
 }
 
