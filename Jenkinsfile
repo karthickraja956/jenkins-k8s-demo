@@ -27,7 +27,7 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'd3c4d27c-c4b3-4309-b5d2-47648db85e79', usernameVariable: 'karthick820', passwordVariable: 'Karthick10')]) {
+                withCredentials([usernamePassword(credentialsId:"{Docker_ID}", usernameVariable: 'karthick820', passwordVariable: 'Karthick10')]) {
                     script {
                         docker.withRegistry('https://index.docker.io/v1/', "{Docker_ID}"){
                             docker.image("${REGISTRY}/${IMAGE_NAME}").push("latest")
