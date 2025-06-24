@@ -41,6 +41,7 @@ pipeline {
                 script {
                     try {
                         sh 'kubectl apply --validate=false -f k8s/node-app-deployment.yaml'
+                        sh 'get pods'
                         echo "Kubernetes deployment successful."
                     } catch (Exception e) {
                         echo "Kubernetes deployment failed: ${e}"
